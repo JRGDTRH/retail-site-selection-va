@@ -60,3 +60,6 @@ Ensure you have Python 3.9+ installed. You will need the following libraries:
    jupyter notebook
    ```
 4. Run the `retail_expansion_and_climate_case_study.ipynb` notebook. The widgets and map will generate dynamically at the bottom of the notebook. Note that some data sources (like FEMA and USDA) may take a few moments to download and cache locally on the first run.
+
+
+<img width="2536" height="1726" alt="image" src="https://github.com/user-attachments/assets/944769e7-5735-4b1d-a97f-bcfbac7f3709" />
