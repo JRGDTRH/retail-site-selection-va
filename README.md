@@ -33,6 +33,14 @@ The climax of the notebook is a dynamic `folium` map embedded directly within Ju
 - **Weighted Linear Combination (WLC):** Real estate teams can adjust visual sliders (e.g., Population Weight, Competition Penalty, Heat Risk Weight) to dynamically recalculate a "Suitability Score" for every tract in real-time.
 - **Visual Intelligence:** The map overlays competitor locations and existing stores, allowing the team to visually pinpoint highly suitable tracts that are unserved by current locations but feature favorable demographics, high food-desert scores (indicating need), and acceptable climate risks.
 
+### 6. Caveats & Limitations (Methodology Risks)
+While this pipeline provides robust directional intelligence, several caveats exist in spatial modeling of this nature:
+- **POI Duplication (Overture Maps):** Because Overture aggregates Point of Interest (POI) data from multiple sources (Meta, Microsoft, OSM), it is highly prone to duplication. While the notebook mitigates this via a 300-meter spatial deduplication grid, some clustered competitors (or those with varying name spellings) may still artificially inflate the competition penalty.
+- **Modifiable Areal Unit Problem (MAUP):** Aggregating points (stores) and calculating suitability at the Census Tract boundary level assumes uniform population and climate risk distribution within that tract. A tract might look highly suitable on average, but the population could be clustered far from viable commercial real estate zones.
+- **Edge Effects at State Borders:** By strictly clipping the competitor points to the Virginia boundary, the 5km radius search might artificially undercount competitors for tracts sitting directly on the state line (e.g., bordering Maryland or North Carolina). 
+- **Temporal Data Misalignment:** Census ACS demographics (2022) do not perfectly align temporally with the Overture POI data (current) or the FEMA dataset. We are inherently analyzing "past" populations against "current" competitors.
+- **Risk Generalization:** The FEMA Heat Wave risk score is an index generalized at the tract level; hyper-local mitigation factors like street-level tree canopy, specific building HVAC capacity, and urban heat island effects are not captured in the tiering.
+
 ---
 
 ## Setup and Installation
